@@ -24,10 +24,7 @@ def transfer(datafile, location):
         print "  "
         print "starting transfer of {0}".format(datafile)
 
-        #basepath = location
-        #basepath = '/media/TerraSAR-X/Acoustics/data/DataCluster'
-        folderPath = 'C:/Users/Greg/Documents/AcWrFi/StAc/Main/ml/TextFile'
-        #folderPath = '/media/TerraSAR-X/Acoustics/data/TextFile' # destination
+        folderPath = '....../ml/TextFile'
 
         # copies the cropped file to a new folder
         shutil.copy(os.path.join(location, datafile), folderPath)

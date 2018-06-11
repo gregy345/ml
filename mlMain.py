@@ -61,7 +61,7 @@ def main():
         # what is the number of target groups? #3 for pipes, 6 for microphones 
         ngroup = 3 #6 #3 
         # location of data? 
-        basepath = 'C:/Users/Greg/Documents/AcWrFi/StAc/Main/ml/DataCluster'
+        basepath = '...../ml/DataCluster'
 
         # changes working directory to folder that has been specified
         os.chdir(basepath) 

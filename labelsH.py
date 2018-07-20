@@ -19,9 +19,9 @@ Output: mlLabels = np array of labels
 
 """
 
-def labels(ngroup, nbr, fillist):
+def labelsH(ngroup, nbr, fillist):
 
-    mlLabels = np.zeros((nbr, 1), dtype=int)
+    mlLabels = np.zeros(nbr, dtype=int) 
 
     # clustering by pipes    
     if ngroup == 3:

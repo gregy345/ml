@@ -52,4 +52,4 @@ def hdv(trim, fftE, srr, start, end, slow, fast):#, decimate): #def mdv(trim, so
         fftHdv = (np.rot90(np.absolute(hdv)))[0] # array rows=1 columns=nbr (horizontal, removed outer set of brackets)
         fftLHdv = np.array(np.log10(fftHdv), dtype = complex)
 
-        return fftHdv, fftLHdv
+        return fftLHdv # fftHdv, fftLHdv #

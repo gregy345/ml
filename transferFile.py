@@ -12,11 +12,11 @@ import os # for opeining files in loop #change working diectory, count files in 
 import os.path
 import glob # looping throught all files in folder
 import shutil
-#from autocropper import autoCropper
+
 """
 transfer the new files created from autocroper
 Input:  datafile = the name of the original file to be moved
-         location = the original location of the file
+        location = the original location of the file
 Output: datafile = identical file in new location
                also deletes original file
 """
@@ -24,7 +24,7 @@ def transfer(datafile, location):
         print "  "
         print "starting transfer of {0}".format(datafile)
 
-        folderPath = '....../ml/TextFile'
+        folderPath = 'C:/.../ml/TextFile'
 
         # copies the cropped file to a new folder
         shutil.copy(os.path.join(location, datafile), folderPath)

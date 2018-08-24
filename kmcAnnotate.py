@@ -1,17 +1,8 @@
-#print __doc__
-import time
 
 import numpy as np
 import pylab as pl
 
-from sklearn.cluster import MiniBatchKMeans, KMeans
-from sklearn.metrics.pairwise import euclidean_distances
-from sklearn.datasets.samples_generator import make_blobs
-import sklearn.datasets # this is to create a new data set for acoustic data
-
-#docs.scipy.org/doc/scipy/reference/generated/scipy.cluster.hierarchy
-from scipy.cluster import hierarchy #dendrogram #pick number of clusters
-import matplotlib.pyplot as plt #dendrogram
+import matplotlib.pyplot as plt 
 
 """
 This porgram creates a scatter plot of the first two dimenstions of 
@@ -26,7 +17,7 @@ Input:  sound = matrix, each row is from a different wav file
         mlLabelsD = labels/groups as dictionary
         mlLabelsH = labels/groups as horizontal array/list
         
-Output: plot
+Output: plot with points labeled
 """
 
 def kmcAnnotate(sound, ncl, fna, mlLabels, mlLabelsD, mlLabelsH):

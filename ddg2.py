@@ -1,19 +1,10 @@
 import scipy
 from scipy.cluster.hierarchy import dendrogram, linkage
-from scipy.cluster.hierarchy import fcluster
-from scipy.cluster.hierarchy import cophenet
-from scipy.spatial.distance import pdist
-
-from pylab import rcParams
-import seaborn as sb 
 import matplotlib.pyplot as plt
 
 import sklearn
 from sklearn.cluster import AgglomerativeClustering
 import sklearn.metrics as sm
-import sklearn.decomposition.pca as princomp
-
-import scipy.cluster.hierarchy as sc 
 
 import pandas as pd
 import numpy as np
@@ -39,19 +30,14 @@ Note: all input files must be the same lengths
 def ddg2(sound, ncls, labelsn, mlLabels, mlLabelsD):  
 		
 	dimentions = sound.shape
+	col = dimentions[1] #50796
 
-	row = dimentions[0] #996
-	col = dimentions[1] #308
-	dim = row*col
-
-	print 'ddg2  dimentions, col, dim'
-	print dimentions
+	print 'number of columns:'
 	print col
-	print dim
 
 	# creates the data frame
 	colum = list(range(1, (col+1)))  
-	df = pd.DataFrame(data=sound, index=labelsn, columns=colum)  
+	df = pd.DataFrame(data=sound, index=labelsn, columns=colum)  #print 'df' #print df
 
 	lnx = 'ward' #lnx = 'complete' #lnx = 'average' 
 	afx = 'euclidean' #afx = 'l1' #afx = 'l2' #afx = 'manhattan' #afx = 'cosine' #afx = 'precomputed'
@@ -60,7 +46,8 @@ def ddg2(sound, ncls, labelsn, mlLabels, mlLabelsD):
 
 	# Create Plot 
 	# ward euclidean pipes use 250 # ward euclidean mic use 58
-	cth = 250 
+	cth = 250 #cth = 35
+	#cth = 53 # 600 # 110 # 400 # 80
 	np.set_printoptions(precision=4) 
 	plt.figure(figsize=(25,14)) ##		 
 	plt.title('{0} linkage, {1} affinity, {2} ngroup, {3} distance'.format(lnx, afx, ncls, cth), fontsize=30)

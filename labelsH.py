@@ -1,14 +1,4 @@
-import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
 import numpy as np
-import wave
-import sys
-from scipy.io.wavfile import read  # reading wav files
-from scipy import fftpack, ndimage # fast fourier transform
-import math
-import cmath
-import pylab
-import re # for converting string into list
 
 """
 Create list of groups 
@@ -27,11 +17,11 @@ def labelsH(ngroup, nbr, fillist):
     if ngroup == 3:
         for t in range (0, nbr):  
                 if 'PC' in fillist[t]: 
-                    mlLabels[t] =  0 
+                    mlLabels[t] =  0 #1 #0
                 elif 'PL' in fillist[t]: 
-                    mlLabels[t] =  2 
+                    mlLabels[t] =  2 #2 #1
                 elif 'PS' in fillist[t]: 
-                    mlLabels[t] =  1 
+                    mlLabels[t] =  1 #0 #2
 
     # clustering by mic    
     elif ngroup == 6:

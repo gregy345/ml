@@ -6,6 +6,7 @@ from scipy.spatial.distance import pdist
 
 from pylab import rcParams
 import seaborn as sb 
+#import matplotlib.pyplot as plt
 
 import sklearn
 from sklearn.cluster import AgglomerativeClustering
@@ -19,8 +20,9 @@ import numpy as np
 from sklearn.decomposition import PCA
 from sklearn import preprocessing
 import sklearn.datasets # this is to create a new data set for acoustic data
+#%matplotlib inline
 import matplotlib.pyplot as plt
-
+#import seaborn as sns; sns.set()
 
 """
 Input:  sound = matrix, each row is from a different wav file
@@ -42,21 +44,26 @@ def pca22(sound, ngroup, labelsn, mlLabels, mlLabelsD):
 	pcaDS = sklearn.datasets.base.Bunch(data=Xscale, target=mlLabels) 
 	
 	# run pca analysis
-	pca = PCA(3)  
+	pca = PCA(4) # pca = PCA(3) # 
 	projected = pca.fit_transform(pcaDS.data) #
+
+	print "pca data"
+	print pca.explained_variance_ratio_ # prints normalized eigen values
+	#print pca
+	print projected
 
 	# Create plots
 	ms = 40
-	ps = 300 
+	ps = 300 #80
 	plt.figure(figsize=(25,14)) 
 	plt.rc('xtick', labelsize=ms) 
 	plt.rc('ytick', labelsize=ms) 
 	plt.scatter(projected[:, 0], projected[:, 1], c=pcaDS.target, edgecolor='none', alpha=0.5, cmap=plt.cm.get_cmap('spectral', ngroup), s=ps)
 	plt.xlabel('component 1', fontsize=ms)
 	plt.ylabel('component 2', fontsize=ms)
-	#plt.colorbar()
+	plt.colorbar()
 	plt.show()
-	
+	"""
 	plt.figure(figsize=(25,14)) 
 	plt.rc('xtick', labelsize=ms) 
 	plt.rc('ytick', labelsize=ms) 
@@ -72,7 +79,7 @@ def pca22(sound, ngroup, labelsn, mlLabels, mlLabelsD):
 	plt.xlabel('component 1', fontsize=ms)
 	plt.ylabel('component 3', fontsize=ms)
 	plt.show()
-	
+	"""
 
 
 	

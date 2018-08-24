@@ -1,23 +1,23 @@
-import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
+
 import numpy as np
-import wave
-import sys
+
 from scipy import fftpack, ndimage
  
 """
 Compute the synthetic appeture matrix
 	Input:  start = the starting time of the sinal (seconds) 
-			end = the end time of the sinal (seconds)  
-			slow = the slow time of the sinal (seconds)  
-			fast = the fast time of the sinal (1xP seconds)  
-			sound = wave file 
-	Output: matrix of log of fast fourier transform in both directions of pressures (NxP)
+		end = the end time of the sinal (seconds)  
+		slow = the slow time of the sinal (seconds)  
+		fast = the fast time of the sinal (1xP seconds)  
+		sound = wave file 
+		decimatS = factor by which signal is downsampled
+Output: fftlog = matrix of log of fast fourier transform in both directions of pressures (NxP)
 """
 def slidingWindow(start, end, slow, fast, sound, decimateS): 
+	
 	# the frequency will always be 44100 when using wave files 
-
 	samplerate = 44100/decimateS 
+
 	# convert varibles from seconds to indices in file
 	iterations = int(float((end-start-fast)*(1/slow)))    
 	StStart = int(float(start*samplerate))
@@ -32,7 +32,9 @@ def slidingWindow(start, end, slow, fast, sound, decimateS):
 		for i in range(0, StFast): # number of columns
 			ttMat[j,i] = b[i+(j*StSlow)] 
 
-	fftt = fftpack.fft(ttMat) 
-	fftlog = np.array(np.log10(np.abs(fftt)), dtype=complex)  
+
+	fftt = fftpack.fft(ttMat) # takes fft of matrix along horizontal axis
+	fftlog = np.array(np.log10(np.abs(fftt)), dtype=complex) #takes absulute value and log
+ 
 	return fftlog 
 
